@@ -16,7 +16,7 @@ const AddMovie = () => {
         if (title === "") {
             return null
         }
-        const movie = {"title": title, 'user_added': true}
+        const movie = {"title": title, 'user_added': true, 'watched': false}
         fetch('http://localhost:8080/newMovie', {
             method: "POST",
             headers: {
@@ -26,7 +26,8 @@ const AddMovie = () => {
             })
             .then(response => response.json())
             .then(data => {
-                if (data.success == true) alert("New Movie Added")
+                console.log(data.data)
+                setUserMovies(data.data)
                 })
         }
         const deleteMovie = (e) => {
@@ -39,7 +40,7 @@ const AddMovie = () => {
                 body: JSON.stringify(id)
                 })
                 .then(response => response.json())
-                .then(data => console.log('something', data))
+                .then(data => setUserMovies(data.data))
         }
     return (
         <div>

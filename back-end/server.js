@@ -25,14 +25,13 @@ app.post('/newMovie', async (req, res) => {
         .insert(title)
         .into('movies')
         .then(async function (data) {
-            const result = await knex.select('title').from('movies')
+            const result = await knex.select('*').from('movies')
             res.status(201).json({success: true, 'data': result})
         })
 })
 
 app.delete('/newMovie', (req, res) => {
     const movie = req.body.id;
-    console.log('movie', movie)
     knex('movies')
         .where('id', movie)
         .del()
