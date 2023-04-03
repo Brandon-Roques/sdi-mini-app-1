@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import HomePage from './Components/homePage.js';
+import AddMovie from './Components/addMovie.js';
+import { Routes, Route } from 'react-router-dom'
+
 
 const App = () => {
-  const movies = [
-    {title: 'Mean Girls'},
-    {title: 'Hackers'},
-    {title: 'The Grey'},
-    {title: 'Sunshine'},
-    {title: 'Ex Machina'},
-  ];
   return (
-    <div className="App">
-      {movies.map((movie, index) => 
-        <div>
-          {movie.title}
-        </div>
-      )}
-    </div>
-  );
+    <Routes>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/addMovie' element={<AddMovie />} />
+    </Routes>
+  )
 }
 
-export default App;
+export default App
