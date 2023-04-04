@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const AddMovie = () => {
     const navigate = useNavigate();
@@ -44,14 +45,13 @@ const AddMovie = () => {
         }
     return (
         <div>
-            <button onClick={() => navigate('/')}>Home</button> <br />
             Enter New Movie Title Here: <input type='text' placeholder='title' onChange={(e) => setTitle(e.target.value)}/>
             <button onClick={newMovie}>Submit</button>
             {userMovies.map((movie, index) => {
                 if (movie["user_added"] == true) {
                     return (
                     <div key={index}>
-                        <button id={movie.id} onClick={() => deleteMovie(movie.id)}>Delete</button>
+                        <Button id={movie.id} onClick={() => deleteMovie(movie.id)}>Delete</Button>
                         {movie.title}
                     </div>
             )}
